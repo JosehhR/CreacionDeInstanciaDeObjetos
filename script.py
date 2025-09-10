@@ -88,7 +88,16 @@ def tomaDatos(perro1):
     print("--------------------------------------------------------------\n" \
     "Bienvenido, vamos a comenzar tomando los datos del perro ")
     perro1.setNombre(input("Ingresa el nombre del perro: "))
-    perro1.setEdad(float(input("Ingresa la edad del perro en años: ")))
+
+    #Correccion para evitar crasheo al insertar letras en la edad
+    while True:
+        try: 
+            edad= (int(input("Ingresa la edad del perro en años: ")))
+            perro1.setEdad(edad)
+            break
+        except (ValueError):
+            print("Solo puedes ingresar numeros enteros!")
+    
     perro1.setRaza(input("Ingresa la raza del perro: "))
     perro1.setColor(input("Ingresa el color de tu perro: "))
     print("--------------------------------------------------------------")
@@ -108,13 +117,20 @@ def mostrarDatos(perro1):
 def menu(perro1):
     name=perro1.getNombre()
     opc=0
-    opc = int(input("--------------------------------------------------------------\n" \
-            f"Que quieres hacer con {name} ?\n" \
-            f"1. Ver los datos de {name} \n" \
-            f"2. Acariciar a {name} \n" \
-            f"3. Dar comida a {name} \n" \
-            f"4. Dar juguete a {name} \n" \
-            "5. Salir del programa \n"))
+
+    #Correccion para manejar caso donde se ingresa algo distinto a un numero en opc
+    while True:
+        try:
+            opc = int(input("--------------------------------------------------------------\n" \
+                    f"Que quieres hacer con {name} ?\n" \
+                    f"1. Ver los datos de {name} \n" \
+                    f"2. Acariciar a {name} \n" \
+                    f"3. Dar comida a {name} \n" \
+                    f"4. Dar juguete a {name} \n" \
+                    "5. Salir del programa \n"))
+            break
+        except: 
+            print("Solo puedes ingresar una opcion numerica!!")
     match opc:
         case 1:
             mostrarDatos(perro1)
@@ -129,12 +145,11 @@ def menu(perro1):
             print(perro1.comprobarFelicidad())
         case 5:
             print("Saliendo del programa...")
+            return
         case _:
             print("Opcion Inexistente, selecciona una opcion valida.")
             
-    if(opc == 5):
-        return
-    elif(perro1.getFelicidad() == 3):
+    if(perro1.getFelicidad() == 3):
         print("---------------------------------------\n" \
         "Felicidades!, lograste el objetivo, el programa ha terminado.")
     else:
