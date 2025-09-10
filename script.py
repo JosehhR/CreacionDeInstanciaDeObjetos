@@ -1,4 +1,5 @@
 #Autor: Jose Luis Ramirez
+#Tengo un punto extra por contestar una pregunta en clase, sobre herencia si no estoy mal creo
 #Programa creado con el fin de hacer feliz a un perro por medio de tres acciones, dar un juguete, acariciar y dar comida
 
 #Ceacion de objeto perro
@@ -82,8 +83,7 @@ class Perro:
         elif(self.felicidad == 3):
             return(f"La felicidad de {nombre} esta en 100%, lograste el objetivo")
         
-#Funcion principal
-
+#Funcion creada para tomar los datos del perro
 def tomaDatos(perro1):
     print("--------------------------------------------------------------\n" \
     "Bienvenido, vamos a comenzar tomando los datos del perro ")
@@ -94,6 +94,7 @@ def tomaDatos(perro1):
     print("--------------------------------------------------------------")
     return
 
+#Funcion creada para mostrar los datos del perro
 def mostrarDatos(perro1):
     print("--------------------------------------------------------------\n" \
     "Los datos del perro son:  \n" \
@@ -103,6 +104,7 @@ def mostrarDatos(perro1):
     f"Color: {perro1.getColor()} \n" \
     "--------------------------------------------------------------\n")
 
+#Funcion de menu para interactuar con las distintas funciones
 def menu(perro1):
     name=perro1.getNombre()
     opc=0
@@ -139,12 +141,13 @@ def menu(perro1):
         menu(perro1)
     return
 
+#Funcion main
 def main():
     perro1 = Perro()
     tomaDatos(perro1)
     menu(perro1)
-
     return
+
 
 if __name__ == "__main__":
     main()
