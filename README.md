@@ -121,18 +121,6 @@ CreacionDeInstanciaDeObjetos/
 
 ---
 
-## 🤝 Contribuciones
-
-¡Las contribuciones son bienvenidas! 🎉  
-Si deseas mejorar este proyecto:
-
-1. Haz un fork del repositorio.  
-2. Crea una nueva rama (`git checkout -b mejora-feature`).  
-3. Realiza tus cambios y haz commit (`git commit -m 'Agrega nueva feature'`).  
-4. Sube la rama (`git push origin mejora-feature`).  
-5. Abre un Pull Request.
-
----
 
 ## 👨‍💻 Autor y Créditos
 
