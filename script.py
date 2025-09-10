@@ -1,14 +1,16 @@
 #Autor: Jose Luis Ramirez
 #Programa creado con el fin de hacer feliz a un perro por medio de tres acciones, dar un juguete, acariciar y dar comida
 
-class perro:
+#Ceacion de objeto perro
+class Perro:
 
     #Constructor
-    def __init__(self, nombre, edad, raza, color):
-        self.nombre = nombre
-        self.edad = int(edad)
-        self.raza = raza
-        self.color = color
+
+    def __init__(self):
+        self.nombre = ""
+        self.edad = 0
+        self.raza = ""
+        self.color = ""
         self.hasComida = False
         self.hasCaricia = False
         self.hasJuguete = False
@@ -51,6 +53,7 @@ class perro:
         else:
             print ("El perro ha sido alimentado, su felicidad ha aumentado")
             self.felicidad += 1
+            self.hasComida = True
 
     def acariciar(self):
         if(self.hasCaricia):
@@ -58,6 +61,7 @@ class perro:
         else:
             print("El perro ha sido acariciado, su felicidad ha aumentado")
             self.felicidad += 1
+            self.hasCaricia = True
 
     def darJuguete(self):
         if(self.hasJuguete):
@@ -65,6 +69,7 @@ class perro:
         else:
             print("Le diste el juguete al perro, su felicidad ha aumentado")
             self.felicidad += 1
+            self.hasJuguete=True
 
     def comprobarFelicidad(self):
         nombre = self.nombre
@@ -76,3 +81,70 @@ class perro:
             return(f"La felicidad de {nombre} esta en 66% ya casi lo logras")
         elif(self.felicidad == 3):
             return(f"La felicidad de {nombre} esta en 100%, lograste el objetivo")
+        
+#Funcion principal
+
+def tomaDatos(perro1):
+    print("--------------------------------------------------------------\n" \
+    "Bienvenido, vamos a comenzar tomando los datos del perro ")
+    perro1.setNombre(input("Ingresa el nombre del perro: "))
+    perro1.setEdad(float(input("Ingresa la edad del perro en años: ")))
+    perro1.setRaza(input("Ingresa la raza del perro: "))
+    perro1.setColor(input("Ingresa el color de tu perro: "))
+    print("--------------------------------------------------------------")
+    return
+
+def mostrarDatos(perro1):
+    print("--------------------------------------------------------------\n" \
+    "Los datos del perro son:  \n" \
+    f"Nombre: {perro1.getNombre()} \n" \
+    f"Edad: {perro1.getEdad()} \n" \
+    f"Raza: {perro1.getRaza()} \n" \
+    f"Color: {perro1.getColor()} \n" \
+    "--------------------------------------------------------------\n")
+
+def menu(perro1):
+    name=perro1.getNombre()
+    opc=0
+    opc = int(input("--------------------------------------------------------------\n" \
+            f"Que quieres hacer con {name} ?\n" \
+            f"1. Ver los datos de {name} \n" \
+            f"2. Acariciar a {name} \n" \
+            f"3. Dar comida a {name} \n" \
+            f"4. Dar juguete a {name} \n" \
+            "5. Salir del programa \n"))
+    match opc:
+        case 1:
+            mostrarDatos(perro1)
+        case 2:
+            perro1.acariciar()
+            print(perro1.comprobarFelicidad())
+        case 3:
+            perro1.darComida()
+            print(perro1.comprobarFelicidad())
+        case 4:
+            perro1.darJuguete()
+            print(perro1.comprobarFelicidad())
+        case 5:
+            print("Saliendo del programa...")
+        case _:
+            print("Opcion Inexistente, selecciona una opcion valida.")
+            
+    if(opc == 5):
+        return
+    elif(perro1.getFelicidad() == 3):
+        print("---------------------------------------\n" \
+        "Felicidades!, lograste el objetivo, el programa ha terminado.")
+    else:
+        menu(perro1)
+    return
+
+def main():
+    perro1 = Perro()
+    tomaDatos(perro1)
+    menu(perro1)
+
+    return
+
+if __name__ == "__main__":
+    main()
