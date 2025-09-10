@@ -121,6 +121,51 @@ CreacionDeInstanciaDeObjetos/
 
 ---
 
+## Manejo de Errores con `try/except`
+
+En la versión mejorada del programa se implementó el manejo de errores
+para evitar que el programa se detenga cuando el usuario ingresa valores
+no válidos.
+
+### ✅ Ejemplo aplicado en la edad del perro:
+
+``` python
+while True:
+    try: 
+        edad = int(input("Ingresa la edad del perro en años: "))
+        perro1.setEdad(edad)
+        break
+    except ValueError:
+        print("Solo puedes ingresar números enteros!")
+```
+
+-   Si el usuario ingresa un valor no numérico (ejemplo: `"tres"`), el
+    programa ya no se rompe.\
+-   En su lugar, muestra un mensaje y vuelve a pedir la edad.
+
+------------------------------------------------------------------------
+
+### ✅ Ejemplo aplicado en el menú principal:
+
+``` python
+while True:
+    try:
+        opc = int(input("Selecciona una opción: "))
+        break
+    except ValueError:
+        print("Solo puedes ingresar una opción numérica!!")
+```
+
+-   Garantiza que solo se acepten números en el menú.\
+-   Evita errores cuando el usuario escribe letras u otros símbolos.
+
+------------------------------------------------------------------------
+
+Gracias a esta mejora, el programa es **más robusto y amigable con el
+usuario**, ya que valida la entrada antes de continuar con la ejecución.
+
+---
+
 
 ## 👨‍💻 Autor y Créditos
 
@@ -128,3 +173,4 @@ CreacionDeInstanciaDeObjetos/
   [GitHub](https://github.com/JosehhR)
 
 - **Colaboración en la redacción del README y aprendizaje**: ChatGPT (OpenAI)
+
